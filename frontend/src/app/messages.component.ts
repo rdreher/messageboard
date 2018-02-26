@@ -4,15 +4,7 @@ import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-messages',
-  template: `
-            <h1>Message Board</h1>
-            <div *ngFor="let message of messages">
-              <mat-card style="margin:8px">
-                <mat-card-title>{{message.owner}}</mat-card-title>
-                <mat-card-content>{{message.text}}</mat-card-content>
-              </mat-card>
-            </div>
-            `
+  templateUrl: './messages.component.html'
 })
 
 export class MessagesComponent implements OnInit {
