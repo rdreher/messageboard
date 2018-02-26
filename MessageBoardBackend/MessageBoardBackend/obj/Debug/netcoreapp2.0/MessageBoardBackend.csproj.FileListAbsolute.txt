@@ -1,0 +1,10 @@
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/bin/Debug/netcoreapp2.0/MessageBoardBackend.deps.json
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/bin/Debug/netcoreapp2.0/MessageBoardBackend.runtimeconfig.json
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/bin/Debug/netcoreapp2.0/MessageBoardBackend.runtimeconfig.dev.json
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/bin/Debug/netcoreapp2.0/MessageBoardBackend.dll
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/bin/Debug/netcoreapp2.0/MessageBoardBackend.pdb
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/obj/Debug/netcoreapp2.0/MessageBoardBackend.csproj.CoreCompileInputs.cache
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/obj/Debug/netcoreapp2.0/MessageBoardBackend.AssemblyInfoInputs.cache
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/obj/Debug/netcoreapp2.0/MessageBoardBackend.AssemblyInfo.cs
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/obj/Debug/netcoreapp2.0/MessageBoardBackend.dll
+/Users/dreher/Developer/messageboard/MessageBoardBackend/MessageBoardBackend/obj/Debug/netcoreapp2.0/MessageBoardBackend.pdb

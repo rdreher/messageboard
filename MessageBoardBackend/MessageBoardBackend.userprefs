@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{8ADDBA9E-2895-4182-89CF-5D4BBEE7B8F6}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MessageBoardBackend/Startup.cs">
+    <Files>
+      <File FileName="MessageBoardBackend/Controllers/MessagesController.cs" Line="24" Column="27" />
+      <File FileName="MessageBoardBackend/Models/Message.cs" Line="10" Column="1" />
+      <File FileName="MessageBoardBackend/Startup.cs" Line="34" Column="13" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MessageBoardBackend PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
