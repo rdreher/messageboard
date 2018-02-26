@@ -12,9 +12,8 @@ namespace MessageBoardBackend
     [Route("api/[controller]")]
     public class MessagesController : Controller
     {
-        [HttpGet]
-        public IEnumerable<Models.Message> Get() {
-            return new Models.Message[] {
+        static List<Models.Message> messages = new
+            List<Models.Message>{
                 new Models.Message {
                     Owner = "Rafael",
                     Text = "Hello there"
@@ -24,12 +23,16 @@ namespace MessageBoardBackend
                     Text = "Hello Maluco"
                 }
             };
+        
+        [HttpGet]
+        public IEnumerable<Models.Message> Get() {
+            return messages;
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody] Models.Message message)
         {
+            messages.Add(message);
         }
 
         // PUT api/values/5
