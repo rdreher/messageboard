@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{8ADDBA9E-2895-4182-89CF-5D4BBEE7B8F6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MessageBoardBackend/Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MessageBoardBackend/Models/Message.cs">
     <Files>
-      <File FileName="MessageBoardBackend/Controllers/MessagesController.cs" Line="24" Column="27" />
+      <File FileName="MessageBoardBackend/Controllers/MessagesController.cs" Line="35" Column="35" />
       <File FileName="MessageBoardBackend/Models/Message.cs" Line="10" Column="1" />
       <File FileName="MessageBoardBackend/Startup.cs" Line="34" Column="13" />
     </Files>
