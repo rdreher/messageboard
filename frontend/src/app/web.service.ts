@@ -14,14 +14,12 @@ export class WebService {
   }
 
   async getMessages() {
-
     try {
       const resp = await this.httpClient.get(this.BASE_URL + '/messages').toPromise();
       this.messages = resp.json();
     } catch (error) {
         this.handleError('Unable to get messages');
     }
-
   }
 
   async postMessage(message) {
@@ -31,8 +29,6 @@ export class WebService {
     } catch (error) {
       this.handleError('Unable to post message');
     }
-    const response = await this.httpClient.post(this.BASE_URL + '/messages', message).toPromise();
-    this.messages.push(response.json());
   }
 
   private handleError(error) {
