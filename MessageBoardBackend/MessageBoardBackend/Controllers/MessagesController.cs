@@ -30,9 +30,10 @@ namespace MessageBoardBackend
         }
 
         [HttpPost]
-        public void Post([FromBody] Models.Message message)
+        public Models.Message Post([FromBody] Models.Message message)
         {
             messages.Add(message);
+            return message;
         }
 
         // PUT api/values/5

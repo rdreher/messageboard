@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { WebService } from './web.service';
 import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 
@@ -7,13 +7,6 @@ import { RepositionScrollStrategy } from '@angular/cdk/overlay';
   templateUrl: './messages.component.html'
 })
 
-export class MessagesComponent implements OnInit {
+export class MessagesComponent {
   constructor (private webService: WebService) {}
-  messages = [];
-
-  async ngOnInit() {
-    const response = await this.webService.getMessages();
-    this.messages = response.json();
-
-  }
 }

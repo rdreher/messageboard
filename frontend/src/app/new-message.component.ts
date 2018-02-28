@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { WebService } from './web.service';
 import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 
@@ -9,7 +9,6 @@ import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 
 export class NewMessageComponent {
 
-  @Output() onposted = new EventEmitter();
   constructor (private webService: WebService) {}
 
   message = {
@@ -19,6 +18,5 @@ export class NewMessageComponent {
 
   post() {
     this.webService.postMessage(this.message);
-    this.onposted.emit(this.message);
   }
 }
