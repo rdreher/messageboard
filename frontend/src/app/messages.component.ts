@@ -8,7 +8,7 @@ import { WebService } from './web.service';
 })
 
 export class MessagesComponent implements OnInit {
-  constructor (private webService: WebService, private route: ActivatedRoute) {}
+  constructor (public webService: WebService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     const name = this.route.snapshot.params.name;

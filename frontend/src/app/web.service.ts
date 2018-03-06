@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class WebService {
   BASE_URL = 'http://localhost:5000/api';
+
   private messageStore = [];
 
   private messageSubject = new Subject();
