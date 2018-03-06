@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { WebService } from './web.service';
-import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html'
 })
 
-export class MessagesComponent {
-  constructor (private webService: WebService) {}
+export class MessagesComponent implements OnInit {
+  constructor (private webService: WebService, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    const name = this.route.snapshot.params.name;
+    this.webService.getMessages(name);
+  }
 }

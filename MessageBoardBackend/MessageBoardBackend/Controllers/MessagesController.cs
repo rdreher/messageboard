@@ -23,10 +23,17 @@ namespace MessageBoardBackend
                     Text = "Hello Maluco"
                 }
             };
-        
+
         [HttpGet]
-        public IEnumerable<Models.Message> Get() {
+        public IEnumerable<Models.Message> Get()
+        {
             return messages;
+        }
+
+        [HttpGet("{name}")]
+        public IEnumerable<Models.Message> Get(string name)
+        {
+            return messages.FindAll(message => message.Owner == name);
         }
 
         [HttpPost]
