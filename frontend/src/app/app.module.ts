@@ -23,6 +23,10 @@ const routes = [{
   component: RegisterComponent
 },
 {
+  path: 'messages',
+  component: MessagesComponent
+},
+{
   path: 'messages/:name',
   component: MessagesComponent
 }];
