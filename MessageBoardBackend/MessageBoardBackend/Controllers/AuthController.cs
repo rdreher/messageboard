@@ -3,44 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MessageBoardBackend.Controllers
 {
-    [Route("api/[controller]")]
+    public class JwtPacket {
+        public string Token { get; set; }
+        public string FirstName { get; set; }
+    }
+
+    [Produces("application/json")]
+    [Route("auth")]
     public class AuthController : Controller
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+        readonly ApiContext context;
+
+        public AuthController(ApiContext context)
         {
-            return new string[] { "value1", "value2" };
+            this.context = context;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        [HttpPost("register")]
+        public JwtPacket Register([FromBody]Models.User user) {
+            var jwt = new JwtSecurityToken();
+            var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+            context.Users.Add(user);
+            context.SaveChanges();
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return new JwtPacket() { Token = encodedJwt, FirstName = user.FirstName };
         }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 
 namespace MessageBoardBackend
 {
@@ -23,6 +24,9 @@ namespace MessageBoardBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApiContext>(opt => 
+              opt.UseInMemoryDatabase("Messages"));
+            
             services.AddCors(options => options.AddPolicy("Cors", builder =>
             {
                 builder
@@ -35,7 +39,7 @@ namespace MessageBoardBackend
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -43,6 +47,25 @@ namespace MessageBoardBackend
             }
             app.UseCors("Cors");
             app.UseMvc();
+
+            var context = serviceProvider.GetService<ApiContext>();
+            SeedData(context);
+        }
+
+        public void SeedData(ApiContext context) {
+            context.Messages.Add(new Models.Message
+            {
+                Owner = "Rafael",
+                Text = "Hello there"
+            });
+
+            context.Messages.Add(new Models.Message
+            {
+                Owner = "Dani",
+                Text = "Hello Maluco"
+            });
+
+            context.SaveChanges();
         }
     }
 }
