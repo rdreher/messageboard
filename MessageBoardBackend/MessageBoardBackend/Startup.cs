@@ -65,6 +65,13 @@ namespace MessageBoardBackend
                 Text = "Hello Maluco"
             });
 
+            context.Users.Add(new Models.User
+            {
+                Email = "rafael@gmail.com",
+                FirstName = "Rafael",
+                Password = "a"
+            });
+
             context.SaveChanges();
         }
     }

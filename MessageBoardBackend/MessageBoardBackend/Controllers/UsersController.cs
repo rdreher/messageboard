@@ -8,39 +8,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MessageBoardBackend.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        readonly ApiContext context;
 
-        // GET api/values/5
+        public UsersController(ApiContext context)
+        {
+            this.context = context;
+        }
         [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        public ActionResult Get(string id) {
+            var user = context.Users.SingleOrDefault(u => u.Id == id);
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+            else
+            {
+                return Ok(user);
         }
     }
 }
