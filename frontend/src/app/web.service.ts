@@ -41,8 +41,14 @@ export class WebService {
     }
   }
 
+  // Gets user information based on the Bearer token
+  // passed to the request
   getUser() {
-    return this.httpClient.get(this.BASE_URL + 'users/me', this.auth.tokenHeader).map( res => res.json());
+    return this.httpClient.get(this.BASE_URL + '/users/me', this.auth.tokenHeader).map( res => res.json());
+  }
+
+  saveUser(userData) {
+    return this.httpClient.post(this.BASE_URL + '/users/me', userData, this.auth.tokenHeader).map( res => res.json());
   }
 
   private handleError(error) {

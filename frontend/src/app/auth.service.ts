@@ -19,8 +19,9 @@ export class AuthService {
     return !!localStorage.getItem(this.TOKEN_KEY);
   }
 
+  // Add the Authorization header to the request
   get tokenHeader() {
-    const header = new Headers({'Authorization': 'Bearer' + localStorage.getItem(this.TOKEN_KEY)});
+    const header = new Headers({'Authorization': 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)});
     return new RequestOptions({headers: header});
   }
 

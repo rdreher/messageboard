@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MessageBoardBackend
 {
@@ -24,9 +27,12 @@ namespace MessageBoardBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Adds inMemory database called Messages
             services.AddDbContext<ApiContext>(opt => 
               opt.UseInMemoryDatabase("Messages"));
             
+            // CORS Configuration.
+            // TODO: Needs to review the policy for prod
             services.AddCors(options => options.AddPolicy("Cors", builder =>
             {
                 builder
@@ -34,6 +40,30 @@ namespace MessageBoardBackend
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
+
+            // Sets the JwT Token signing key
+            // Not safe for production, as the keys is hardcoded
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret key"));
+
+            // Configure Authentication to use JwT Bearer Token
+            // This is for testing only!
+            // On production you want to validate the TokenParamters
+            services.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer( cfg => {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    IssuerSigningKey = signingKey,
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true
+                };
+            });
+
             services.AddMvc();
 
         }
@@ -45,6 +75,10 @@ namespace MessageBoardBackend
             {
                 app.UseDeveloperExceptionPage();
             }
+            // Set the application to use authentication
+            app.UseAuthentication();
+
+            // Set the application to use CORS
             app.UseCors("Cors");
             app.UseMvc();
 
@@ -69,7 +103,8 @@ namespace MessageBoardBackend
             {
                 Email = "rafael@gmail.com",
                 FirstName = "Rafael",
-                Password = "a"
+                Password = "a",
+                Id = "1"
             });
 
             context.SaveChanges();
