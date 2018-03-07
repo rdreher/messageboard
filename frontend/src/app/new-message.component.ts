@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WebService } from './web.service';
-import { RepositionScrollStrategy } from '@angular/cdk/overlay';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-new-message',
@@ -9,10 +9,10 @@ import { RepositionScrollStrategy } from '@angular/cdk/overlay';
 
 export class NewMessageComponent {
 
-  constructor (private webService: WebService) {}
+  constructor (private webService: WebService, private auth: AuthService) {}
 
   message = {
-    owner: '',
+    owner: this.auth.name,
     text: ''
   };
 
