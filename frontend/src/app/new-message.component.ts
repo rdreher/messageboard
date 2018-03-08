@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { WebService } from './web.service';
-import { AuthService } from './auth.service';
+import { Adal5Service } from 'adal-angular5';
+import { adal } from 'adal-angular';
 
 @Component({
   selector: 'app-new-message',
@@ -9,10 +10,10 @@ import { AuthService } from './auth.service';
 
 export class NewMessageComponent {
 
-  constructor (private webService: WebService, private auth: AuthService) {}
+  constructor (private webService: WebService, private auth: Adal5Service) {}
 
   message = {
-    owner: this.auth.name,
+    owner: this.auth.userInfo.profile.name,
     text: ''
   };
 

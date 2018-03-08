@@ -1,8 +1,9 @@
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Subject } from 'rxjs/Subject';
-import { AuthService } from './auth.service';
+import { Adal5Service } from 'adal-angular5';
+import { adal } from 'adal-angular';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -17,13 +18,19 @@ export class WebService {
 
   messages = this.messageSubject.asObservable();
 
-  constructor(private httpClient: Http, private sb: MatSnackBar, private auth: AuthService) {
+  constructor(private httpClient: Http, private sb: MatSnackBar, private auth: Adal5Service) {
     this.getMessages('');
+  }
+
+  // Add the Authorization header to the request
+  get tokenHeader() {
+    const header = new Headers({'Authorization': 'Bearer ' + this.auth.userInfo.token});
+    return new RequestOptions({headers: header});
   }
 
   getMessages(user) {
     user = (user) ? '/' + user : '';
-    this.httpClient.get(this.BASE_URL + '/messages' + user).subscribe(response => {
+    this.httpClient.get(this.BASE_URL + '/messages' + user, this.tokenHeader).subscribe(response => {
       this.messageStore = response.json();
       this.messageSubject.next(this.messageStore);
     }, error => {
@@ -33,22 +40,12 @@ export class WebService {
 
   async postMessage(message) {
     try {
-      const resp = await this.httpClient.post(this.BASE_URL + '/messages', message).toPromise();
+      const resp = await this.httpClient.post(this.BASE_URL + '/messages', message, this.tokenHeader).toPromise();
       this.messageStore.push(resp.json());
       this.messageSubject.next(this.messageStore);
     } catch (error) {
       this.handleError('Unable to post message');
     }
-  }
-
-  // Gets user information based on the Bearer token
-  // passed to the request
-  getUser() {
-    return this.httpClient.get(this.BASE_URL + '/users/me', this.auth.tokenHeader).map( res => res.json());
-  }
-
-  saveUser(userData) {
-    return this.httpClient.post(this.BASE_URL + '/users/me', userData, this.auth.tokenHeader).map( res => res.json());
   }
 
   private handleError(error) {

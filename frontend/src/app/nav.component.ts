@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
+import { Adal5Service } from 'adal-angular5';
+import { adal } from 'adal-angular';
 
 @Component({
   selector: 'app-nav',
@@ -7,5 +8,5 @@ import { AuthService } from './auth.service';
 })
 
 export class NavComponent {
-  constructor(private auth: AuthService) {}
+  constructor(public auth: Adal5Service) {}
 }

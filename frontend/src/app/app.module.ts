@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatInputModule, MatSnackBarModule, MatToolbarModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Adal5Service, Adal5HTTPService } from 'adal-angular5';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages.component';
@@ -12,26 +14,20 @@ import { WebService } from './web.service';
 import { NewMessageComponent } from './new-message.component';
 import { NavComponent } from './nav.component';
 import { HomeComponent } from './home.component';
-import { RegisterComponent } from './register.component';
-import { AuthService } from './auth.service';
-import { LoginComponent } from './login.component';
-import { UserComponent } from './user.component';
+import { LoginAadComponent } from './loginaad.component';
+import { LogoutComponent } from './logout.component';
 
 const routes = [{
   path: '',
   component: HomeComponent
 },
 {
-  path: 'register',
-  component: RegisterComponent
-},
-{
   path: 'login',
-  component: LoginComponent
+  component: LoginAadComponent
 },
 {
-  path: 'user',
-  component: UserComponent
+  path: 'logout',
+  component: LogoutComponent
 },
 {
   path: 'messages',
@@ -49,9 +45,8 @@ const routes = [{
     NewMessageComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent,
-    LoginComponent,
-    UserComponent
+    LoginAadComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +61,11 @@ const routes = [{
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [WebService, AuthService],
+  providers: [
+    WebService,
+    Adal5Service,
+    { provide: Adal5HTTPService, useFactory: Adal5HTTPService.factory, deps: [HttpClient, Adal5Service] }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

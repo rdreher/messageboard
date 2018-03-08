@@ -1,5 +1,11 @@
 ﻿<Properties StartupConfiguration="{8ADDBA9E-2895-4182-89CF-5D4BBEE7B8F6}|Default">
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MessageBoardBackend/appsettings.json">
+    <Files>
+      <File FileName="MessageBoardBackend/Startup.cs" Line="73" Column="79" />
+      <File FileName="MessageBoardBackend/Extensions/AzureAdAuthenticationBuilderExtensions.cs" Line="23" Column="71" />
+      <File FileName="MessageBoardBackend/appsettings.json" Line="21" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
