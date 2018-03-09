@@ -1,5 +1,3 @@
-# MessageBoard 
-
 ---
 services: active-directory
 platforms: dotnet
@@ -8,6 +6,9 @@ client: Angular 5
 service: ASP.NET Core 2.0
 endpoint: AAD V2
 ---
+
+# MessageBoard 
+Angular 5 + ASP.NET Core 2.0 + Azure Active Directory (AAD)
 
 ## About this application
 
