@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBoardBackend", "MessageBoardBackend\MessageBoardBackend.csproj", "{8ADDBA9E-2895-4182-89CF-5D4BBEE7B8F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBoardAPI", "MessageBoardBackend\MessageBoardAPI.csproj", "{8ADDBA9E-2895-4182-89CF-5D4BBEE7B8F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

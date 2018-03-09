@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 
-namespace MessageBoardBackend
+namespace MessageBoardAPI
 {
     public class Startup
     {
@@ -39,31 +39,6 @@ namespace MessageBoardBackend
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
-
-            // Sets the JwT Token signing key
-            // Not safe for production, as the keys is hardcoded
-            // var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret key"));
-
-            // Configure Authentication to use JwT Bearer Token
-            // This is for testing only!
-            // On production you want to validate the TokenParamters
-            /*
-            services.AddAuthentication(options => {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer( cfg => {
-                cfg.RequireHttpsMetadata = false;
-                cfg.SaveToken = true;
-                cfg.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    IssuerSigningKey = signingKey,
-                    ValidateAudience = false,
-                    ValidateIssuer = false,
-                    ValidateLifetime = false,
-                    ValidateIssuerSigningKey = true
-                };
-            });
-            */
 
             // Setup AAD Authentication
             services.AddAuthentication(sharedOptions =>
@@ -96,7 +71,7 @@ namespace MessageBoardBackend
         public void SeedData(ApiContext context) {
             context.Messages.Add(new Models.Message
             {
-                Owner = "Rafael",
+                Owner = "Rafael Dreher",
                 Text = "Hello there"
             });
 
@@ -105,15 +80,6 @@ namespace MessageBoardBackend
                 Owner = "Dani",
                 Text = "Hello Maluco"
             });
-
-            context.Users.Add(new Models.User
-            {
-                Email = "rafael@gmail.com",
-                FirstName = "Rafael",
-                Password = "a",
-                Id = "1"
-            });
-
             context.SaveChanges();
         }
     }
