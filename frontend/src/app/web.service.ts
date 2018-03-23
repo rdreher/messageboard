@@ -22,9 +22,11 @@ export class WebService {
     this.getMessages('');
   }
 
-  // Add the Authorization header to the request
+  // Add the HTTP Header to the request
   get tokenHeader() {
-    const header = new Headers({'Authorization': 'Bearer ' + this.auth.userInfo.token});
+    const header = new Headers();
+    header.append('Content-Type', 'application/json');
+    header.append('Authorization', 'Bearer ' + this.auth.userInfo.token);
     return new RequestOptions({headers: header});
   }
 
