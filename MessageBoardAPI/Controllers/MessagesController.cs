@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace MessageBoardAPI
 {
     [Authorize]
+    [RequireHttps]
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class MessagesController : Controller
