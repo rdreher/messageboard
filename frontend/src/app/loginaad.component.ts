@@ -5,7 +5,7 @@ import { adal } from 'adal-angular';
 const config: adal.Config = {
   tenant: 'rafaeldrehergmail.onmicrosoft.com',
   clientId: 'fea922e0-f20b-4038-bc96-aa7be62c6e2e',
-  postLogoutRedirectUri: 'http://localhost:4200/'
+  postLogoutRedirectUri: 'https://messageb.azurewebsites.net/'
 };
 
 @Component({
