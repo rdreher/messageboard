@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class WebService {
-  BASE_URL = 'https://messageboardapiv2.azurewebsites.net/api';
+  BASE_URL = 'https://apimessageboard.azurewebsites.net/api';
 
   private messageStore = [];
 
