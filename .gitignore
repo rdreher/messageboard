@@ -8,4 +8,4 @@ xs
 PublishProfiles
 dist
 .deployment
-
+package-lock.json
