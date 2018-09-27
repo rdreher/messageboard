@@ -4,7 +4,7 @@ import { adal } from 'adal-angular';
 
 const config: adal.Config = {
   tenant: 'rdreher.com',
-  clientId: 'f101a8ad-4d6b-4f45-9736-51015e1a58e8'
+  clientId: 'fea922e0-f20b-4038-bc96-aa7be62c6e2e'
 };
 
 @Component({
