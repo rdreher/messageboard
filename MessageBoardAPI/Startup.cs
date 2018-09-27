@@ -77,8 +77,8 @@ namespace MessageBoardAPI
 
             context.Messages.Add(new Models.Message
             {
-                Owner = "Dani",
-                Text = "Hello Maluco"
+                Owner = "Murali",
+                Text = "Hello! Whats up?"
             });
             context.SaveChanges();
         }
