@@ -6,6 +6,7 @@ const config: adal.Config = {
   tenant: 'rdreher.com',
   clientId: 'f101a8ad-4d6b-4f45-9736-51015e1a58e8',
   postLogoutRedirectUri: 'https://messagec.azurewebsites.net/',
+  loginResource: 'e3f598bd-da8d-4a97-86d0-7e903b4d09c3',
   cacheLocation: 'localStorage'
 };
 
