@@ -3,7 +3,7 @@ import { Adal5Service } from 'adal-angular5';
 import { adal } from 'adal-angular';
 
 const config: adal.Config = {
-  tenant: 'rafaeldrehergmail.onmicrosoft.com',
+  tenant: 'rdreher.com',
   clientId: 'f101a8ad-4d6b-4f45-9736-51015e1a58e8',
   postLogoutRedirectUri: 'https://messagec.azurewebsites.net/',
   cacheLocation: 'localStorage'
