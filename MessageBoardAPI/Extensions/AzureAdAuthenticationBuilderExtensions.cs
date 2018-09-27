@@ -20,7 +20,7 @@ namespace Microsoft.AspNetCore.Authentication
             builder.AddJwtBearer(cfg => {
                 cfg.RequireHttpsMetadata = false;
                 cfg.SaveToken = true;
-                cfg.Audience = "fea922e0-f20b-4038-bc96-aa7be62c6e2e";
+                cfg.Audience = "e3f598bd-da8d-4a97-86d0-7e903b4d09c3";
                 cfg.TokenValidationParameters = new IdentityModel.Tokens.TokenValidationParameters()
                 {
                     ValidateAudience = true,
