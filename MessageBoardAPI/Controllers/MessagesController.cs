@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MessageBoardAPI
 {
-    [Authorize]
-    [RequireHttps]
+    //[Authorize]
+    //[RequireHttps]
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class MessagesController : Controller
@@ -26,12 +26,16 @@ namespace MessageBoardAPI
         [HttpGet]
         public IEnumerable<Models.Message> Get()
         {
+            Request.HttpContext.Response.Headers.Add("X-Frame-Options", "sameorigin");
+            Request.HttpContext.Response.Headers.Add("Cache-Control", "public");
             return context.Messages;
         }
 
         [HttpGet("{name}")]
         public IEnumerable<Models.Message> Get(string name)
         {
+            Request.HttpContext.Response.Headers.Add("X-Frame-Options", "sameorigin");
+            Request.HttpContext.Response.Headers.Add("Cache-Control", "public");
             return context.Messages.Where(message => message.Owner == name);
         }
 

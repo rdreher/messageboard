@@ -16,10 +16,19 @@ import { NavComponent } from './nav.component';
 import { HomeComponent } from './home.component';
 import { LoginAadComponent } from './loginaad.component';
 import { LogoutComponent } from './logout.component';
+import { BypassSecurityComponent} from './bypass-security.component';
 
 const routes = [{
   path: '',
   component: HomeComponent
+},
+{
+  path: 'bypass',
+  component: BypassSecurityComponent
+},
+{
+  path: 'bypass/:name',
+  component: BypassSecurityComponent
 },
 {
   path: 'login',
@@ -46,7 +55,8 @@ const routes = [{
     NavComponent,
     HomeComponent,
     LoginAadComponent,
-    LogoutComponent
+    LogoutComponent,
+    BypassSecurityComponent
   ],
   imports: [
     BrowserModule,

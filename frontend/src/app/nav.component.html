@@ -1,6 +1,8 @@
 <mat-toolbar color="primary">
   <button mat-button routerLink="/" >Message Board</button>
   <button mat-button routerLink="/messages" >Messages</button>
+  <button *ngIf="auth.userInfo.authenticated" mat-button [routerLink]="['/bypass']" [queryParams]="{name: auth.userInfo.profile.name}" queryParamsHandling >Security</button>
+
   <span style="flex: 1 1 auto"></span>
   <button *ngIf="!auth.userInfo.authenticated" mat-button routerLink="/login" >Login</button>
   <button *ngIf="auth.userInfo.authenticated" mat-button >Welcome {{auth.userInfo.profile.name}}</button>
