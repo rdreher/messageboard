@@ -24,13 +24,11 @@ const routes = [{
 },
 {
   path: 'bypass',
-  component: BypassSecurityComponent,
-  canActivate: [AdalGuard]
+  component: BypassSecurityComponent
 },
 {
   path: 'bypass/:name',
-  component: BypassSecurityComponent,
-  canActivate: [AdalGuard]
+  component: BypassSecurityComponent
 },
 {
   path: 'login',
