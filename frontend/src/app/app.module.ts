@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatInputModule, MatSnackBarModule, MatToolbarModule } from '@angular/material';
-import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Adal5Service, Adal5HTTPService } from 'adal-angular5';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AdalService, AdalGuard, AdalInterceptor } from 'adal-angular4';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages.component';
@@ -24,11 +24,13 @@ const routes = [{
 },
 {
   path: 'bypass',
-  component: BypassSecurityComponent
+  component: BypassSecurityComponent,
+  canActivate: [AdalGuard]
 },
 {
   path: 'bypass/:name',
-  component: BypassSecurityComponent
+  component: BypassSecurityComponent,
+  canActivate: [AdalGuard]
 },
 {
   path: 'login',
@@ -40,11 +42,13 @@ const routes = [{
 },
 {
   path: 'messages',
-  component: MessagesComponent
+  component: MessagesComponent,
+  canActivate: [AdalGuard]
 },
 {
   path: 'messages/:name',
-  component: MessagesComponent
+  component: MessagesComponent,
+  canActivate: [AdalGuard]
 }];
 
 @NgModule({
@@ -66,6 +70,7 @@ const routes = [{
     MatSnackBarModule,
     MatCardModule,
     MatToolbarModule,
+    HttpClientModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
@@ -73,8 +78,8 @@ const routes = [{
   ],
   providers: [
     WebService,
-    Adal5Service,
-    { provide: Adal5HTTPService, useFactory: Adal5HTTPService.factory, deps: [HttpClient, Adal5Service] }
+    AdalService, AdalGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AdalInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

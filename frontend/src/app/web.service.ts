@@ -2,8 +2,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Subject } from 'rxjs/Subject';
-import { Adal5Service } from 'adal-angular5';
-import { adal } from 'adal-angular';
+import { AdalService } from 'adal-angular4';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
@@ -18,15 +17,20 @@ export class WebService {
 
   messages = this.messageSubject.asObservable();
 
-  constructor(private httpClient: Http, private sb: MatSnackBar, private auth: Adal5Service) {
+  private token = '';
+
+  constructor(private httpClient: Http, private sb: MatSnackBar, private auth: AdalService) {
     this.getMessages('');
   }
 
   // Add the HTTP Header to the request
   get tokenHeader() {
+    this.auth.acquireToken('e3f598bd-da8d-4a97-86d0-7e903b4d09c3').subscribe( response => {
+      this.token = response.toString();
+    });
     const header = new Headers();
     header.append('Content-Type', 'application/json');
-    header.append('Authorization', 'Bearer ' + this.auth.userInfo.token);
+    header.append('Authorization', 'Bearer ' + this.token);
     return new RequestOptions({headers: header});
   }
 

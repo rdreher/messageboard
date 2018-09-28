@@ -1,8 +1,8 @@
 <mat-card class="card">
   <mat-card-content>
-    <mat-input-container>
+    <mat-form-field>
       <textarea [(ngModel)]="message.text" matInput placeholder="Message"></textarea>
-    </mat-input-container>
+    </mat-form-field>
     <mat-card-actions>
       <button (click)="post()" mat-button color="primary">POST</button>
     </mat-card-actions>

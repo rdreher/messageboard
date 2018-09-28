@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Adal5Service } from 'adal-angular5';
-import { adal } from 'adal-angular';
+import { AdalService } from 'adal-angular4';
 
 const config: adal.Config = {
-  tenant: 'rdreher.com',
-  clientId: 'fea922e0-f20b-4038-bc96-aa7be62c6e2e',
-  postLogoutRedirectUri: 'https://messageb.azurewebsites.net/',
-  loginResource: 'e3f598bd-da8d-4a97-86d0-7e903b4d09c3',
+  endpoints: {
+    'https://apimessageboard.azurewebsites.net/api/messages': 'e3f598bd-da8d-4a97-86d0-7e903b4d09c3'
+  },
+  tenant: 'b5ad2fb1-ae04-4131-a671-b6b9f174bf04',
+  clientId: 'f101a8ad-4d6b-4f45-9736-51015e1a58e8',
+  postLogoutRedirectUri: 'https://messagec.azurewebsites.net/',
   cacheLocation: 'localStorage'
 };
 
@@ -17,7 +18,7 @@ const config: adal.Config = {
 
 export class LoginAadComponent implements OnInit {
 
-  constructor(private auth: Adal5Service) {
+  constructor(private auth: AdalService) {
     this.auth.init(config);
   }
 
