@@ -10,7 +10,5 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: cd MessageBoardAPI
-  displayName: 'cd MessageBoardAPI'
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build --configuration $(buildConfiguration) ./MessageBoardAPI/MessageBoardAPI.sln
   displayName: 'dotnet build $(buildConfiguration)'
