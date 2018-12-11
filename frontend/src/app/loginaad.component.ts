@@ -30,12 +30,5 @@ export class LoginAadComponent implements OnInit {
     if (!this.auth.userInfo.authenticated) {
       this.auth.login();
     }
-
-    // Log the user information to the console
-    // console.log('username ' + this.auth.userInfo.username);
-    // console.log('authenticated: ' + this.auth.userInfo.authenticated);
-    // console.log('name: ' + this.auth.userInfo.profile.name);
-    // console.log('token: ' + this.auth.userInfo.token);
-    // console.log(this.auth.userInfo.profile);
   }
 }
