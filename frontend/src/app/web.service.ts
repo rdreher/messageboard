@@ -55,6 +55,6 @@ export class WebService {
   }
 
   private handleError(error) {
-    this.sb.open(error, 'close', {duration: 2000});
+    this.sb.open(error, 'close', {duration: 4000});
   }
 }
