@@ -9,12 +9,6 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl, SafeHtml} from '@angular/platfo
 })
 export class BypassSecurityComponent implements OnInit {
 
-  dangerousUrl: string;
-  dangerousHtmlTag: string;
-  dangerousVideoUrl: string;
-  trustedHtmlTag: SafeHtml;
-  trustedUrl: SafeUrl;
-  videoUrl: SafeResourceUrl;
   name: SafeHtml;
   nameURL: SafeUrl;
 
@@ -24,8 +18,6 @@ export class BypassSecurityComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer, private activatedRoute: ActivatedRoute) {
     this.name = sanitizer.bypassSecurityTrustHtml(this.activatedRoute.snapshot.queryParams['name']);
     this.nameURL = sanitizer.bypassSecurityTrustUrl('messages/' + this.activatedRoute.snapshot.queryParams['name']);
-    this.dangerousUrl = 'javascript:alert(window.localStorage.getItem(\'adal.access.token.keyfea922e0-f20b-4038-bc96-aa7be62c6e2e\'))';
-    this.trustedUrl = sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
   }
   ngOnInit() {
   }
