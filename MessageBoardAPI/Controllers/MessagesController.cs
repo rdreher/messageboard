@@ -23,6 +23,15 @@ namespace MessageBoardAPI
             this.context = context;
         }
 
+        [HttpDelete]
+        public IEnumerable<Models.Message> Delete(string Id)
+        {
+            var dbMessage = context.Messages;
+            var message = dbMessage.Where(msg => msg.Id == "Id").First();
+            dbMessage.Remove(message);
+            return context.Messages;
+        }
+
         [HttpGet]
         public IEnumerable<Models.Message> Get()
         {
